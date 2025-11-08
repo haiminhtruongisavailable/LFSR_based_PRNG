@@ -1,0 +1,127 @@
+|top_lfsr_7seg
+clock_10Mhz => clock_10Mhz.IN2
+reset => reset.IN2
+i_enable => i_enable.IN1
+Anode_Activate[0] << Seven_segment_LED_display_Controller:display_inst.Anode_Activate
+Anode_Activate[1] << Seven_segment_LED_display_Controller:display_inst.Anode_Activate
+Anode_Activate[2] << Seven_segment_LED_display_Controller:display_inst.Anode_Activate
+Anode_Activate[3] << Seven_segment_LED_display_Controller:display_inst.Anode_Activate
+LED_out[0] << Seven_segment_LED_display_Controller:display_inst.LED_out
+LED_out[1] << Seven_segment_LED_display_Controller:display_inst.LED_out
+LED_out[2] << Seven_segment_LED_display_Controller:display_inst.LED_out
+LED_out[3] << Seven_segment_LED_display_Controller:display_inst.LED_out
+LED_out[4] << Seven_segment_LED_display_Controller:display_inst.LED_out
+LED_out[5] << Seven_segment_LED_display_Controller:display_inst.LED_out
+LED_out[6] << Seven_segment_LED_display_Controller:display_inst.LED_out
+
+
+|top_lfsr_7seg|Clock_divider:clkdiv_inst
+clock_in => clock_out~reg0.CLK
+clock_in => counter[0].CLK
+clock_in => counter[1].CLK
+clock_in => counter[2].CLK
+clock_in => counter[3].CLK
+clock_in => counter[4].CLK
+clock_in => counter[5].CLK
+clock_in => counter[6].CLK
+clock_in => counter[7].CLK
+clock_in => counter[8].CLK
+clock_in => counter[9].CLK
+clock_in => counter[10].CLK
+clock_in => counter[11].CLK
+clock_in => counter[12].CLK
+clock_in => counter[13].CLK
+clock_in => counter[14].CLK
+clock_in => counter[15].CLK
+clock_in => counter[16].CLK
+clock_in => counter[17].CLK
+clock_in => counter[18].CLK
+clock_in => counter[19].CLK
+clock_in => counter[20].CLK
+clock_in => counter[21].CLK
+clock_in => counter[22].CLK
+clock_in => counter[23].CLK
+clock_in => counter[24].CLK
+clock_in => counter[25].CLK
+clock_in => counter[26].CLK
+clock_in => counter[27].CLK
+clock_out <= clock_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top_lfsr_7seg|lfsr_top:lfsr_inst
+clk => o_lfsr[0]~reg0.CLK
+clk => o_lfsr[1]~reg0.CLK
+clk => o_lfsr[2]~reg0.CLK
+clk => o_lfsr[3]~reg0.CLK
+rst => o_lfsr[0]~reg0.PRESET
+rst => o_lfsr[1]~reg0.PRESET
+rst => o_lfsr[2]~reg0.ACLR
+rst => o_lfsr[3]~reg0.PRESET
+i_enable => o_lfsr[3]~reg0.ENA
+i_enable => o_lfsr[2]~reg0.ENA
+i_enable => o_lfsr[1]~reg0.ENA
+i_enable => o_lfsr[0]~reg0.ENA
+o_lfsr[0] <= o_lfsr[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_lfsr[1] <= o_lfsr[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_lfsr[2] <= o_lfsr[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_lfsr[3] <= o_lfsr[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top_lfsr_7seg|Seven_segment_LED_display_Controller:display_inst
+clock_10Mhz => refresh_counter[0].CLK
+clock_10Mhz => refresh_counter[1].CLK
+clock_10Mhz => refresh_counter[2].CLK
+clock_10Mhz => refresh_counter[3].CLK
+clock_10Mhz => refresh_counter[4].CLK
+clock_10Mhz => refresh_counter[5].CLK
+clock_10Mhz => refresh_counter[6].CLK
+clock_10Mhz => refresh_counter[7].CLK
+clock_10Mhz => refresh_counter[8].CLK
+clock_10Mhz => refresh_counter[9].CLK
+clock_10Mhz => refresh_counter[10].CLK
+clock_10Mhz => refresh_counter[11].CLK
+clock_10Mhz => refresh_counter[12].CLK
+clock_10Mhz => refresh_counter[13].CLK
+clock_10Mhz => refresh_counter[14].CLK
+clock_10Mhz => refresh_counter[15].CLK
+clock_10Mhz => refresh_counter[16].CLK
+clock_10Mhz => refresh_counter[17].CLK
+clock_10Mhz => refresh_counter[18].CLK
+clock_10Mhz => refresh_counter[19].CLK
+reset => refresh_counter[0].ACLR
+reset => refresh_counter[1].ACLR
+reset => refresh_counter[2].ACLR
+reset => refresh_counter[3].ACLR
+reset => refresh_counter[4].ACLR
+reset => refresh_counter[5].ACLR
+reset => refresh_counter[6].ACLR
+reset => refresh_counter[7].ACLR
+reset => refresh_counter[8].ACLR
+reset => refresh_counter[9].ACLR
+reset => refresh_counter[10].ACLR
+reset => refresh_counter[11].ACLR
+reset => refresh_counter[12].ACLR
+reset => refresh_counter[13].ACLR
+reset => refresh_counter[14].ACLR
+reset => refresh_counter[15].ACLR
+reset => refresh_counter[16].ACLR
+reset => refresh_counter[17].ACLR
+reset => refresh_counter[18].ACLR
+reset => refresh_counter[19].ACLR
+binary_data[0] => Mux0.IN3
+binary_data[1] => Mux0.IN2
+binary_data[2] => Mux0.IN1
+binary_data[3] => Mux0.IN0
+Anode_Activate[0] <= refresh_counter[18].DB_MAX_OUTPUT_PORT_TYPE
+Anode_Activate[1] <= Anode_Activate.DB_MAX_OUTPUT_PORT_TYPE
+Anode_Activate[2] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+Anode_Activate[3] <= <GND>
+LED_out[0] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+LED_out[1] <= <VCC>
+LED_out[2] <= <VCC>
+LED_out[3] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+LED_out[4] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+LED_out[5] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+LED_out[6] <= <GND>
+
+

@@ -1,0 +1,25 @@
+module lfsr_top
+#(parameter SEED = 4'b1011)
+(
+    input clk,
+    input rst,         
+    input i_enable,
+    output [3:0] o_lfsr,
+    output o_system
+);
+    reg [3:0] lfsr;
+    wire feedback;
+
+    assign feedback = lfsr[1] ^ lfsr[0]; // polynomial taps
+
+    always @(posedge clk or posedge rst)
+    begin 
+        if (rst)
+            lfsr <= SEED;
+        else if (i_enable)
+            lfsr <= {feedback, lfsr[3:1]};  
+    end
+
+    assign o_lfsr = lfsr;
+    assign o_system = lfsr[0];
+endmodule
